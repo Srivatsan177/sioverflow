@@ -1,0 +1,39 @@
+{
+  "properties": [
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "description": "jwt secret key"
+    },
+    {
+      "name": "github.host",
+      "type": "java.lang.String",
+      "description": "github host for getting the access token"
+    },
+    {
+      "name": "github.api-host",
+      "type": "java.lang.String",
+      "description": "Github api host for validating tokens"
+    },
+    {
+      "name": "github.client-id",
+      "type": "java.lang.String",
+      "description": "Client id for github oauth"
+    },
+    {
+      "name": "github.client-secret",
+      "type": "java.lang.String",
+      "description": "Client secret for github oauth"
+    },
+    {
+      "name": "github.scope",
+      "type": "java.lang.String",
+      "description": "Scopes for github oauth"
+    },
+    {
+      "name": "github.redirect-uri",
+      "type": "java.lang.String",
+      "description": "Redirect uri for github oauth"
+    }
+  ]
+}

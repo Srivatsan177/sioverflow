@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: app
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sioverflow
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    '[org.springframework.web]': DEBUG
+
+jwt:
+  secret: 6e5198be8d608765738cf714efcc2c4c7f25947a07ee831e7756b6cf0f2f2b98
+github:
+  host: "https://github.com"
+  api-host: "https://api.github.com"
+  client-id: Ov23liA2Hr0kEPO2EaZ8
+  client-secret: 28911a7eabc49d0b2bfe3d8c16ea60e0c65faccc
+  scope: user:email
+  redirect-uri: http://localhost:8080/auth/code/github
