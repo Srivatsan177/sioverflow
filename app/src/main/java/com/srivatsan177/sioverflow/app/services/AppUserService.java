@@ -6,5 +6,7 @@ import com.srivatsan177.sioverflow.app.dtos.AppUserDTO;
 
 @Service
 public interface AppUserService {
-    public AppUserDTO findOrCreateUser(AppUserDTO appUserDTO);
+    AppUserDTO findOrCreateUser(AppUserDTO appUserDTO);
+
+    AppUserDTO findUser(String username);
 }

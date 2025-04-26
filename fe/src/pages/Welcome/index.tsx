@@ -1,6 +1,6 @@
 import { Button, Typography, Box, Paper, ButtonGroup, Stack } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { setBodyColor } from '../utils/setBodyColor';
+import { setBodyColor } from '../../utils/setBodyColor';
 
 const Welcome = () => {
   setBodyColor("#87CEEB");

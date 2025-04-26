@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 public class HomeController {
     @GetMapping
-    public String getMethodName(Authentication authentication) {
+    public String home(Authentication authentication) {
         return authentication.getName();
     }
 }

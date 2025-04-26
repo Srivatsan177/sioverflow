@@ -1,10 +1,12 @@
 package com.srivatsan177.sioverflow.app.services.impl;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import com.srivatsan177.sioverflow.app.dtos.AppUserDTO;
 import com.srivatsan177.sioverflow.app.entities.AppUser;
 import com.srivatsan177.sioverflow.app.entities.UserRole;
+import com.srivatsan177.sioverflow.app.exceptions.RestException;
 import com.srivatsan177.sioverflow.app.mappers.AppUserMapper;
 import com.srivatsan177.sioverflow.app.repositories.AppUserRespository;
 import com.srivatsan177.sioverflow.app.services.AppUserService;
@@ -28,4 +30,12 @@ public class AppUserServiceImpl implements AppUserService {
         }
         return AppUserMapper.toAppUserDTO(user);
     }
+
+    @Override
+    public AppUserDTO findUser(String username) {
+        AppUser user = appUserRespository.findByUsername(username)
+                .orElseThrow(() -> new RestException(HttpStatus.NOT_FOUND, "User not found"));
+        return AppUserMapper.toAppUserDTO(user);
+    }
+
 }
