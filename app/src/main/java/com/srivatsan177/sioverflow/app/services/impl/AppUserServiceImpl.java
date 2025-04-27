@@ -1,5 +1,6 @@
 package com.srivatsan177.sioverflow.app.services.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Component
+@Slf4j
 public class AppUserServiceImpl implements AppUserService {
     private final AppUserRespository appUserRespository;
 
@@ -27,6 +29,10 @@ public class AppUserServiceImpl implements AppUserService {
             user = AppUserMapper.toAppUser(appUserDTO);
             user.setRole(UserRole.USER);
             return AppUserMapper.toAppUserDTO(appUserRespository.save(user));
+        } else if (!appUserDTO.getAvatarUrl().equals(user.getAvatarUrl())) {
+            log.info("User avatar changed for: {}", appUserDTO.getUsername());
+            user.setAvatarUrl(appUserDTO.getAvatarUrl());
+            user = appUserRespository.save(user);
         }
         return AppUserMapper.toAppUserDTO(user);
     }

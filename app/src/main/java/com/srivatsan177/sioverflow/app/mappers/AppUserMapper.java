@@ -11,6 +11,7 @@ public class AppUserMapper {
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .role(user.getRole())
+                .avatarUrl(user.getAvatarUrl())
                 .build();
     }
 
@@ -20,6 +21,7 @@ public class AppUserMapper {
                 .username(appUserDTO.getUsername())
                 .email(appUserDTO.getEmail())
                 .role(appUserDTO.getRole())
+                .avatarUrl(appUserDTO.getAvatarUrl())
                 .build();
     }
 
@@ -27,6 +29,7 @@ public class AppUserMapper {
         return AppUserDTO.builder()
                 .username(githubUser.getLogin())
                 .email(githubUser.getEmail())
+                .avatarUrl(githubUser.getAvatarUrl())
                 .build();
     }
 }

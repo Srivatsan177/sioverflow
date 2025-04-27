@@ -2,9 +2,9 @@ spring:
   application:
     name: app
   datasource:
-    url: jdbc:postgresql://localhost:5432/sioverflow
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://ep-patient-union-a6wqabnv-pooler.us-west-2.aws.neon.tech/sioverflow?sslmode=require
+    username: sioverflow_owner
+    password: npg_8Wh0InVJSqpO
   jpa:
     properties:
       hibernate:

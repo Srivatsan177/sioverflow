@@ -29,4 +29,5 @@ public class AppUser {
     private String email;
     @Enumerated(jakarta.persistence.EnumType.STRING)
     private UserRole role;
+    private String avatarUrl;
 }

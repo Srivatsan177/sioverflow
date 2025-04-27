@@ -40,7 +40,7 @@ public class GithubAuthenticationFilter extends OncePerRequestFilter {
         AppUserDTO appUserDTO = AppUserMapper.toAppUserDTO(githubUser);
         appUserDTO = appUserService.findOrCreateUser(appUserDTO);
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(appUserDTO.getUsername(),
-                null, List.of(appUserDTO.getRole()));
+                accessToken, List.of(appUserDTO.getRole()));
         SecurityContextHolder.getContext().setAuthentication(auth);
         filterChain.doFilter(request, response);
     }
