@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 public class AppUserController {
     private final AppUserService appUserService;
-    private final GithubApiRestClient githubApiRestClient;
 
     @GetMapping("/info")
     public AppUserDTO userInfo(Authentication authentication) {
