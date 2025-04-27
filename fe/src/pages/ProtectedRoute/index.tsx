@@ -2,6 +2,7 @@ import { Navigate } from "react-router";
 import { useGetUser } from "../../utils/api/auth/user/getUser";
 import { JSX, useEffect } from "react";
 import { useUser } from "../../hooks/useUser";
+import Navbar from "./Layout/Navbar";
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
     const { user, setUser } = useUser();
@@ -20,7 +21,10 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
         return <Navigate to="/login/github" />
     }
 
-    return <>{children}</>;
+    return <>
+        <Navbar />
+        {children}
+    </>;
 }
 
 export default ProtectedRoute;

@@ -1,9 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router';
 import Welcome from '../pages/Welcome';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import NotFound from '../pages/NotFound';
-import Dashboard from '../pages/ProtectedRoute/Dashboard';
 import Github from '../pages/login/Github';
+import { PROFILE } from '../constants/routes';
+import Profile from '../pages/ProtectedRoute/Profile';
+import Dashboard from '../pages/ProtectedRoute/Dashboard';
 
 const Router = () => {
   return <BrowserRouter>
@@ -15,10 +17,11 @@ const Router = () => {
         {/* Protected routes example */}
         <Route path="dashboard" element={
           <ProtectedRoute>
-            <Dashboard />
+            <Outlet />
           </ProtectedRoute>
         }>
-          <Route index element={<></>} />
+          <Route index element={<Dashboard />} />
+          <Route path={PROFILE} element={<Profile />} />
         </Route>
 
         {/* 404 route */}

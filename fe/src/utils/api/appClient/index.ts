@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Cookies } from "react-cookie";
+import { GITHUB_LOGIN_URI } from "../../../constants/routes";
 
 const cookies = new Cookies();
 
@@ -47,7 +48,8 @@ axiosClient.interceptors.response.use(
                 // return axiosClient(originalRequest);
 
                 cookies.remove('github_access_token');
-                window.location.href = 'https://github.com/login/oauth/authorize?client_id=Ov23liA2Hr0kEPO2EaZ8&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Flogin%2Fgithub%2Fcode';
+                
+                window.location.href = GITHUB_LOGIN_URI;
 
                 // For now, just clear the token and reject
             } catch (refreshError) {

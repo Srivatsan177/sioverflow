@@ -1,6 +1,7 @@
 import { Button, Typography, Box, Paper, ButtonGroup, Stack } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { setBodyColor } from '../../utils/setBodyColor';
+import { GITHUB_LOGIN_URI } from '../../constants/routes';
 
 const Welcome = () => {
   setBodyColor("#87CEEB");
@@ -35,7 +36,7 @@ const Welcome = () => {
             }}
           >
             <ButtonGroup variant='contained'>
-              <Button color='secondary' startIcon={<GitHubIcon />}>Login</Button>
+              <Button onClick={() => window.location.href = GITHUB_LOGIN_URI} color='secondary' startIcon={<GitHubIcon />}>Login</Button>
             </ButtonGroup>
           </Box>
         </Stack>
