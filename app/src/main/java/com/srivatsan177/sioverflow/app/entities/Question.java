@@ -1,28 +1,31 @@
 package com.srivatsan177.sioverflow.app.entities;
 
-import java.util.UUID;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+import java.util.UUID;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Data
 @Entity
-@Table(name = "users")
-public class AppUser {
+@Table(name = "questions")
+public class Question {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
-    @Column(unique = true)
-    private String username;
-    @Column(unique = true)
-    private String email;
-    @Enumerated(jakarta.persistence.EnumType.STRING)
-    private UserRole role;
-    private String avatarUrl;
+
+    private String title;
+
+    private String[] tags;
+
+    private String body;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
+    private AppUser author;
 }

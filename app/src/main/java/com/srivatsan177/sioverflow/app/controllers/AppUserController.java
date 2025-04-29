@@ -1,6 +1,5 @@
 package com.srivatsan177.sioverflow.app.controllers;
 
-import com.srivatsan177.sioverflow.app.clients.GithubApiRestClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/v1/user")
 @RequiredArgsConstructor
 @Slf4j
 public class AppUserController {
