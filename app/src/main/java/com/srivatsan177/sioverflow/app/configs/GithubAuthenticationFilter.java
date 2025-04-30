@@ -10,7 +10,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.srivatsan177.sioverflow.app.clients.GithubApiRestClient;
 import com.srivatsan177.sioverflow.app.dtos.AppUserDTO;
-import com.srivatsan177.sioverflow.app.dtos.github.GithubApiUserResponse;
+import com.srivatsan177.sioverflow.app.dtos.github.GithubApiUserResponseDTO;
 import com.srivatsan177.sioverflow.app.mappers.AppUserMapper;
 import com.srivatsan177.sioverflow.app.services.AppUserService;
 
@@ -36,7 +36,7 @@ public class GithubAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
         String accessToken = header.substring(7);
-        GithubApiUserResponse githubUser = githubApiRestClient.getUser(accessToken);
+        GithubApiUserResponseDTO githubUser = githubApiRestClient.getUser(accessToken);
         AppUserDTO appUserDTO = AppUserMapper.toAppUserDTO(githubUser);
         appUserDTO = appUserService.findOrCreateUser(appUserDTO);
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(appUserDTO.getUsername(),

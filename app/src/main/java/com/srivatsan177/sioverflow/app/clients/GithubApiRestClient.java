@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.srivatsan177.sioverflow.app.common.RestConstants;
-import com.srivatsan177.sioverflow.app.dtos.github.GithubApiUserResponse;
+import com.srivatsan177.sioverflow.app.dtos.github.GithubApiUserResponseDTO;
 
 @Component
 public class GithubApiRestClient extends AppRestClient {
@@ -12,8 +12,8 @@ public class GithubApiRestClient extends AppRestClient {
         super(baseUrl);
     }
 
-    public GithubApiUserResponse getUser(String accessToken) {
+    public GithubApiUserResponseDTO getUser(String accessToken) {
         return get(RestConstants.GITHUB_USER, null, headers -> headers.setBearerAuth(accessToken),
-                GithubApiUserResponse.class);
+                GithubApiUserResponseDTO.class);
     };
 }

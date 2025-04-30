@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changelog/versions/V1_create_user_table.sql
   - include:
       file: db/changelog/versions/V2_create_questions_table.sql
+  - include:
+      file: db/changelog/versions/V3_add_search_vector_questions.sql

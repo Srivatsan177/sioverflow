@@ -1,7 +1,7 @@
 package com.srivatsan177.sioverflow.app.mappers;
 
 import com.srivatsan177.sioverflow.app.dtos.AppUserDTO;
-import com.srivatsan177.sioverflow.app.dtos.github.GithubApiUserResponse;
+import com.srivatsan177.sioverflow.app.dtos.github.GithubApiUserResponseDTO;
 import com.srivatsan177.sioverflow.app.entities.AppUser;
 
 public class AppUserMapper {
@@ -25,7 +25,7 @@ public class AppUserMapper {
                 .build();
     }
 
-    public static AppUserDTO toAppUserDTO(GithubApiUserResponse githubUser) {
+    public static AppUserDTO toAppUserDTO(GithubApiUserResponseDTO githubUser) {
         return AppUserDTO.builder()
                 .username(githubUser.getLogin())
                 .email(githubUser.getEmail())

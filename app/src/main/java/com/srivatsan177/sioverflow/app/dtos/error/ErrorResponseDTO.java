@@ -1,4 +1,4 @@
-package com.srivatsan177.sioverflow.app.dtos.auth.github;
+package com.srivatsan177.sioverflow.app.dtos.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GithubToken {
-    private String accessToken;
+public class ErrorResponseDTO {
+    private int status;
+    private String message;
 }

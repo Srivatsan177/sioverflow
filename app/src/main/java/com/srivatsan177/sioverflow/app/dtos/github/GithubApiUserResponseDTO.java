@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GithubApiUserResponse {
+public class GithubApiUserResponseDTO {
     private String login;
     private String email;
     @JsonProperty("avatar_url")

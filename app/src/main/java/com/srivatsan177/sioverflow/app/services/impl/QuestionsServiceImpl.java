@@ -2,8 +2,11 @@ package com.srivatsan177.sioverflow.app.services.impl;
 
 import com.srivatsan177.sioverflow.app.dtos.questions.CreateQuestionDTO;
 import com.srivatsan177.sioverflow.app.dtos.questions.QuestionDTO;
+import com.srivatsan177.sioverflow.app.dtos.questions.QuestionParam;
+import com.srivatsan177.sioverflow.app.dtos.rest.PageParams;
 import com.srivatsan177.sioverflow.app.entities.AppUser;
 import com.srivatsan177.sioverflow.app.entities.Question;
+import com.srivatsan177.sioverflow.app.entities.specs.QuestionSpecs;
 import com.srivatsan177.sioverflow.app.mappers.AppUserMapper;
 import com.srivatsan177.sioverflow.app.mappers.QuestionMapper;
 import com.srivatsan177.sioverflow.app.repositories.QuestionRepository;
@@ -14,10 +17,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -46,10 +51,13 @@ public class QuestionsServiceImpl implements QuestionsService {
     }
 
     @Override
-    public Iterable<QuestionDTO> getQuestions(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return questionRepository.findAll(pageable).stream()
+    public List<QuestionDTO> getQuestions(PageParams pageParams, QuestionParam questionParam) {
+        Specification<Question> questionSpecification = QuestionSpecs.buildQuestionSpec(questionParam);
+        Pageable pageable = PageRequest.of(pageParams.getPage(), pageParams.getSize());
+        List<QuestionDTO> questions = questionRepository.findAll(questionSpecification, pageable).stream()
                 .map(QuestionMapper::toQuestionDTO)
                 .toList();
+        log.info("Questions fetched: {}", questions.size());
+        return questions;
     }
 }
