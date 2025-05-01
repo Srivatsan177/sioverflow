@@ -10,11 +10,11 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, mb: 2 }}>
       <AppBar color="primary" position="static">
         <Toolbar sx={{ flexGrow: 1 }}>
           <IconButton>
-            <img src="/logo-white.png" style={{ width: '3rem', height: '3rem' }} />
+            <img src="/logo-white.png" style={{ width: '3rem', height: '3rem' }} alt="logo" />
           </IconButton>
           <ButtonGroup sx={{ flexGrow: 1 }} variant="outlined">
             <Button onClick={() => navigate(DASHBOARD)} color="inherit">Home</Button>

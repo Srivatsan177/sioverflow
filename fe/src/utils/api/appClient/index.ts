@@ -5,22 +5,22 @@ import { GITHUB_LOGIN_URI } from "../../../constants/routes";
 const cookies = new Cookies();
 
 const axiosClient = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8080',
+    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8080/v1',
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     },
-    timeout: 10000 // 10 seconds
+    timeout: 10000
 });
 
 axiosClient.interceptors.request.use(
     (config) => {
-        // Get the token from cookies
         const token = cookies.get('github_access_token');
-        // If token exists, add it to the headers
         if (token && token !== "undefined" && token !== "null") {
             config.headers.Authorization = `Bearer ${token}`;
         }
+        config.headers.Accept = 'application/json';
+        config.headers["Content-Type"] = 'application/json';
 
         return config;
     },
@@ -48,7 +48,7 @@ axiosClient.interceptors.response.use(
                 // return axiosClient(originalRequest);
 
                 cookies.remove('github_access_token');
-                
+
                 window.location.href = GITHUB_LOGIN_URI;
 
                 // For now, just clear the token and reject
@@ -63,6 +63,7 @@ axiosClient.interceptors.response.use(
 
 export const api = {
     getUser: "/user/info",
+    getQuestions: "/questions",
     getAccessToken: (code: string) => `/auth/code/github?code=${code}`
 }
 

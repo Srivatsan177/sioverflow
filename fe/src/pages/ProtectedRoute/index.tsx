@@ -17,6 +17,7 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
     if (isLoading) {
         return <>Loding...</>
     }
+
     if (userResponse === undefined) {
         return <Navigate to="/login/github" />
     }

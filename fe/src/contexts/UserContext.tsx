@@ -8,6 +8,6 @@ export type IUserContext = {
 
 
 export const UserContext = createContext<IUserContext>({
-    user: { username: '', email: '' },
+    user: { id: "", username: '', email: '', role: "", avatarUrl: "" },
     setUser: () => { },
 });

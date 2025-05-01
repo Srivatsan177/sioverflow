@@ -5,7 +5,7 @@ import appClient, { api } from "../../appClient";
 const getUser = async (): Promise<User> => {
     try {
         const response = await appClient.get(api.getUser);
-        return response.data
+        return response.data.data[0]
     } catch (e) {
         return Promise.reject(e);
     }
