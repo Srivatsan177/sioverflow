@@ -9,4 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class QuestionParam {
     private String search;
+
+    private String[] tags;
 }

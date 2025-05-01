@@ -6,6 +6,7 @@ import com.srivatsan177.sioverflow.app.dtos.questions.QuestionDTO;
 import com.srivatsan177.sioverflow.app.dtos.questions.QuestionParam;
 import com.srivatsan177.sioverflow.app.dtos.rest.PageParams;
 import com.srivatsan177.sioverflow.app.services.QuestionsService;
+import com.srivatsan177.sioverflow.app.util.ObjectMapperUtil;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +40,7 @@ public class QuestionsController {
 
     @GetMapping
     public BaseResponseDTO<QuestionDTO> getQuestions(PageParams pageParams, QuestionParam questionParam) {
+        log.debug("Question param passed {}", ObjectMapperUtil.toJsonString(questionParam));
         List<QuestionDTO> questions = questionsService.getQuestions(pageParams, questionParam);
         log.info("Questions fetched: {}", questions.size());
         return BaseResponseDTO.<QuestionDTO>builder()
