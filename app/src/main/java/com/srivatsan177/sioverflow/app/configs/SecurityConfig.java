@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/code/**").permitAll()
+                        .requestMatchers("/v1/auth/code/**").permitAll()
                         .requestMatchers("/api-docs/**").permitAll()
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .anyRequest().authenticated())

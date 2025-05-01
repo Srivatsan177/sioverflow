@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
     private final GithubRestClient githubRestClient;

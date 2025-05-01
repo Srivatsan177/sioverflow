@@ -9,11 +9,11 @@ public class QuestionSpecs {
     public static Specification<Question> buildQuestionSpec(QuestionParam questionParam) {
         Specification<Question> spec = Specification.where(null);
 
-        if (questionParam.getSearch() != null) {
+        if (questionParam.getSearch() != null && !questionParam.getSearch().isEmpty()) {
             spec = spec.and(searchSpec(questionParam.getSearch()));
         }
 
-        if(questionParam.getTags() != null) {
+        if(questionParam.getTags() != null && questionParam.getTags().length != 0) {
             spec = spec.and(tagsSpec(questionParam.getTags()));
         }
 

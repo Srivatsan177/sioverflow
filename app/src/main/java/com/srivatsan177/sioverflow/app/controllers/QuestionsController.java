@@ -17,28 +17,28 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/v1/questions", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/v1/questions")
 @RequiredArgsConstructor
 @Slf4j
 @Tag(name = "Question Management", description = "APIs for managing questions")
 public class QuestionsController {
     private final QuestionsService questionsService;
 
-    @PostMapping
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public BaseResponseDTO<QuestionDTO> createQuestion(@RequestBody CreateQuestionDTO createQuestionDTO) {
         QuestionDTO questionDTO = questionsService.createQuestion(createQuestionDTO);
         log.info("Question created: {} by {}", questionDTO.getId(), questionDTO.getAuthor().getUsername());
         return BaseResponseDTO.<QuestionDTO>builder().data(List.of(questionDTO)).build();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public BaseResponseDTO<QuestionDTO> getQuestion(@PathVariable UUID id) {
         QuestionDTO questionDTO = questionsService.getQuestion(id);
         log.info("Question fetched: {}", questionDTO.getId());
         return BaseResponseDTO.<QuestionDTO>builder().data(List.of(questionDTO)).build();
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public BaseResponseDTO<QuestionDTO> getQuestions(PageParams pageParams, QuestionParam questionParam) {
         log.debug("Question param passed {}", ObjectMapperUtil.toJsonString(questionParam));
         List<QuestionDTO> questions = questionsService.getQuestions(pageParams, questionParam);
