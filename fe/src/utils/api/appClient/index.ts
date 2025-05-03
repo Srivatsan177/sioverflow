@@ -64,6 +64,7 @@ axiosClient.interceptors.response.use(
 export const api = {
     getUser: "/user/info",
     getQuestions: "/questions",
+    getQuestion: (id: string) => `/questions/${id}`,
     getAccessToken: (code: string) => `/auth/code/github?code=${code}`
 }
 
