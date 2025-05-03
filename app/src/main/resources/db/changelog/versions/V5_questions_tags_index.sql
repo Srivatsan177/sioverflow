@@ -1,0 +1,1 @@
+CREATE INDEX idx_question_tags ON questions USING GIN (tags);

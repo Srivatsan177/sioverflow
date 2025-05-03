@@ -43,9 +43,10 @@ public class QuestionsController {
         log.debug("Question param passed {}", ObjectMapperUtil.toJsonString(questionParam));
         List<QuestionDTO> questions = questionsService.getQuestions(pageParams, questionParam);
         log.info("Questions fetched: {}", questions.size());
+        String nextUri = "/v1/questions?page=" + (pageParams.getPage() + 1) + "&size=" + pageParams.getSize();
         return BaseResponseDTO.<QuestionDTO>builder()
                 .data(questions)
-                .nextUri("/v1/questions?page=" + (pageParams.getPage() + 1) + "&size=" + pageParams.getSize())
+                .nextUri(questions.isEmpty() ? null : nextUri)
                 .build();
     }
 }

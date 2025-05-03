@@ -7,3 +7,5 @@ databaseChangeLog:
       file: db/changelog/versions/V3_add_search_vector_questions.sql
   - include:
       file: db/changelog/versions/V4_array_some_overlap.sql
+  - include:
+      file: db/changelog/versions/V5_questions_tags_index.sql
